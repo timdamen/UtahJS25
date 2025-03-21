@@ -257,7 +257,7 @@ How to navigate a website with the keyboard, [keyboard navigation](https://acces
 | <kbd>Tab</kbd>                  | move to next interactive element     |
 | <kbd>Shift</kbd>  + <kbd>Tab</kbd> | move to previous interactive element |
 | <kbd>Return</kbd>/<kbd>Enter</kbd>                                       | activate elements (links, buttons, etc)              |
-| <kbd>Spacebar</kbd>                                     | activates buttons, checkbox, radiobutton (such as to pause/play videos, submit forms, etc)            |
+| <kbd>Spacebar</kbd>                                     | activates buttons, checkbox, selectbox (such as to pause/play videos, submit forms, etc)            |
 | <kbd>Esc</kbd>                                     | close opened content (modals, navigation menus, etc) or cancel current action                  |
 | <kbd>←</kbd>/<kbd>↑</kbd>/<kbd>→</kbd>/<kbd>↓</kbd>                                     | navigate within widgets (tablists, checkboxes within a disclosure button, etc) and navigate around a page                  |
 
@@ -633,10 +633,6 @@ modal.showModal();
 <button onclick="modal1.show()" class="btn btn-primary">show()</button>
 <button onclick="modal2.showModal()" class="btn btn-primary">ShowModal()</button>
 
-<v-click>
-Why is the styling of the <pre class="inline-block">showModal()</pre> different?
-</v-click>
-
 <BarBottom title="keyboard accessibility & focus">
   <Item text="timdamen.io">
     <carbon:link />
@@ -667,28 +663,11 @@ Why is the styling of the <pre class="inline-block">showModal()</pre> different?
 </style>
 
 ---
-layout: image
-image: /images/toplayer.png
----
-
-<BarBottom title="keyboard accessibility & focus" class="bg-black">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
 layout: center
 ---
 
 # HTML (`tabindex`) allows us to customise focus order
-use this feature with caution
+use this feature with caution!
 
 
 <style>
@@ -845,6 +824,13 @@ button:active {
     <a href="#">Link</a>
   <div class="element border-2 border-red600 p1" tabindex="-1">This div has <code>tabindex="-1"</code> - Not in tab order</div>
   <button onclick="document.querySelector('[tabindex=\'-1\']').focus()">Click to focus the element above</button>
+<br>
+<br>
+
+Focus with with javascript
+  ```js
+element.focus()
+```
 <v-click>
   
   `tabindex="-1"` is useful for:
@@ -1053,7 +1039,7 @@ layout: center
 
 Let's stay in touch!
 
-slides: [https://webdevcon25.timdamen.io](webdevcon25.timdamen.io)
+slides: [webdevcon25.timdamen.io](https://webdevcon25.timdamen.io)
 
 <BarBottom title="webdevcon25.timdamen.io">
   <Item text="timdamen.io">
