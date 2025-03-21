@@ -45,7 +45,7 @@ That's what we are going to discuss today.
 - Interactive elements
 - Focus rings
 - Focus traps
-- Tabindex
+- Tabindex (bonus?)
 
 <BarBottom title="keyboard accessibility & focus">
   <Item text="timdamen.io">
@@ -86,7 +86,6 @@ image: /images/moter-imp.jpg
 ---
 layout: image-right
 image: /images/Tim-2.jpeg
-class: rounded-lg w-50
 ---
 
 # Tim Damen
@@ -1054,7 +1053,9 @@ layout: center
 
 Let's stay in touch!
 
-<BarBottom title="keyboard accessibility & focus">
+slides: [https://webdevcon25.timdamen.io](webdevcon25.timdamen.io)
+
+<BarBottom title="webdevcon25.timdamen.io">
   <Item text="timdamen.io">
     <carbon:link />
   </Item>
