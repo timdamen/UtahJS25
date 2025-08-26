@@ -385,7 +385,7 @@ padding: 0px;
 
 ---
 
-<Youtube id="UMLgenmD2aY?start=133" width="100%" height="450px"/>
+<Youtube id="UMLgenmD2aY?start=133&rel=0" width="100%" height="450px"/>
 
 <BarBottom title="Diving into the Toplayer: Where Dialogs, Popovers, and Modals Live">
   <Item text="timdamen.io">
@@ -654,7 +654,7 @@ layout: image-right
 image: /images/toplayer.png
 ---
 
-# The `#top-layer` is above everything else, it has his own layer above the main document 
+# The `#top-layer` is above everything else, it has its own layer above the main document 
 
 <BarBottom title="drafts.csswg.org./css-position-4/#top-layer">
   <Item text="timdamen.io">
@@ -675,6 +675,237 @@ image: /images/toplayer.png
 <style>
 .slidev-layout{
 padding: 0px;
+}
+</style>
+
+---
+
+# FILO stacking
+First In, Last Out
+
+<div class="stack-container">
+    <div class="item item1">First</div>
+    <div class="item item2">Second</div>
+    <div class="item item3">Third</div>
+</div>
+
+<div class="info">
+    <p><strong>Push Order:</strong> First → Second → Third</p>
+    <p><strong>Pop Order:</strong> Third → Second → First</p>
+    <p style="margin-top: 10px;">The first item added is the last to be removed!</p>
+</div>
+
+<style>
+
+h1 {
+    color: #white;
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.stack-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 30px;
+    border: 3px solid #white;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    background: rgba(0, 0, 0, 0.79);
+}
+
+.stack-label {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #666;
+    font-weight: bold;
+}
+
+.item {
+    position: absolute;
+    width: 180px;
+    height: 50px;
+    left: 10px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+}
+
+.item1 {
+    animation: pushItem1 8s infinite;
+}
+
+.item2 {
+    animation: pushItem2 8s infinite;
+}
+
+.item3 {
+    animation: pushItem3 8s infinite;
+}
+
+@keyframes pushItem1 {
+    0%, 10% {
+        opacity: 0;
+        bottom: 300px;
+    }
+    15%, 50% {
+        opacity: 1;
+        bottom: 10px;
+    }
+    55%, 100% {
+        opacity: 0;
+        bottom: 300px;
+    }
+}
+
+@keyframes pushItem2 {
+    0%, 20% {
+        opacity: 0;
+        bottom: 300px;
+    }
+    25%, 45% {
+        opacity: 1;
+        bottom: 70px;
+    }
+    50%, 100% {
+        opacity: 0;
+        bottom: 300px;
+    }
+}
+
+@keyframes pushItem3 {
+    0%, 30% {
+        opacity: 0;
+        bottom: 300px;
+    }
+    35%, 40% {
+        opacity: 1;
+        bottom: 130px;
+    }
+    45%, 100% {
+        opacity: 0;
+        bottom: 300px;
+    }
+}
+
+.phase-indicator {
+    font-size: 1.2em;
+    color: #white;
+    margin-top: 20px;
+    height: 30px;
+}
+
+.phase {
+    opacity: 0;
+    animation: phaseShow 8s infinite;
+}
+
+.phase.push {
+    animation-delay: 0s;
+}
+
+.phase.pop {
+    animation-delay: 3.5s;
+}
+
+@keyframes phaseShow {
+    0%, 35% {
+        opacity: 1;
+    }
+    40%, 100% {
+        opacity: 0;
+    }
+}
+
+.arrow {
+    font-size: 2em;
+    color: #667eea;
+    animation: bounce 1s infinite;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.info {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 15px;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 10px;
+    color: #white;
+}
+
+.info h3 {
+    margin-bottom: 10px;
+    color: #667eea;
+}
+</style>
+
+---
+
+<Youtube id="V_1-xoxFdzM?rel=0" width="100%" height="450px"/>
+
+<BarBottom title="Diving into the Toplayer: Where Dialogs, Popovers, and Modals Live">
+  <Item text="timdamen.io">
+    <carbon:link />
+  </Item>
+  <Item text="Tim Damen">
+    <carbon:logo-linkedin />
+  </Item>
+    <Item text="timdamen">
+    <carbon:logo-github />
+  </Item>
+</BarBottom>
+
+---
+layout: center
+---
+
+# `Element.requestFullscreen()`
+
+Is a Web API method that requests the browser to display a specific element in fullscreen mode (`#top-layer`)
+
+Idea originated in 2007 at Opera, the API was standardized in 2016, and it is now supported across modern browsers.
+
+<BarBottom title="https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API">
+  <Item text="timdamen.io">
+    <carbon:link />
+  </Item>
+  <Item text="Tim Damen">
+    <carbon:logo-linkedin />
+  </Item>
+    <Item text="timdamen">
+    <carbon:logo-github />
+  </Item>
+</BarBottom>
+
+<style>
+.slidev-layout{
+width: 700px;
+margin: auto;
 }
 </style>
 
@@ -750,7 +981,7 @@ code {
 }
 </style>
 
-<BarBottom title="https://www.erikkroes.nl/blog/the-universal-focus-state/">
+<BarBottom title="Diving into the Toplayer: Where Dialogs, Popovers, and Modals Live">
   <Item text="timdamen.io">
     <carbon:link />
   </Item>
@@ -786,7 +1017,7 @@ code {
 }
 </style>
 
-<BarBottom title="https://www.erikkroes.nl/blog/the-universal-focus-state/">
+<BarBottom title="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog/">
   <Item text="timdamen.io">
     <carbon:link />
   </Item>
@@ -803,6 +1034,67 @@ code {
 # modal vs non-modal
 
 <DialogDemo />
+
+---
+layout: image-left
+image: /images/itsatrap.png
+backgroundSize: contain
+---
+
+# Keyboard focus trap
+
+Sometimes you want to prevent keyboard focus from leaving a component, like a modal dialog.
+
+<BarBottom title="Diving into the Toplayer; Where Dialogs, Popovers, and Modals Live">
+  <Item text="timdamen.io">
+    <carbon:link />
+  </Item>
+  <Item text="Tim Damen">
+    <carbon:logo-linkedin />
+  </Item>
+    <Item text="timdamen">
+    <carbon:logo-github />
+  </Item>
+</BarBottom>
+
+
+<style>
+p {
+  font-size: 140%;
+  line-height: 1.2;
+}
+</style>
+
+
+---
+layout: image-left
+image: /images/toplayer.png
+---
+
+# backdrop
+
+Some component have a backdrop.
+
+**Toplayer** elements have a built-in styleable pseudo-element `::backdrop`
+
+<BarBottom title="https://drafts.csswg.org/css-position-4/#selectordef-backdrop">
+  <Item text="timdamen.io">
+    <carbon:link />
+  </Item>
+  <Item text="Tim Damen">
+    <carbon:logo-linkedin />
+  </Item>
+    <Item text="timdamen">
+    <carbon:logo-github />
+  </Item>
+</BarBottom>
+
+<style>
+p {
+  font-size: 140%;
+  line-height: 1.2;
+}
+</style>
 
 ---
 layout: center
@@ -876,13 +1168,102 @@ code {
 
 ---
 
-# `[popover]` positioning
+# `[popover]` implementation
+Requires no JavaScript, just HTML
 
-<PopoverDemoPosition />
+```html
+<button>
+  Toggle popover
+</button>
+
+<div>
+  ...
+</div>
+```
+
+<style>
+code {
+  font-size: 1.4rem;
+}
+</style>
+
+---
+
+# `[popover]` implementation
+Requires no JavaScript, just HTML
+
+```html
+<button popovertarget="x" popovertargetaction="show"> 
+  Open popover
+</button>
+
+<div popover id="x">
+  ...
+</div>
+```
+
+<button popovertarget="x" popovertargetaction="show" style="color:black; padding: 2px; background-color: #f0f0f0; margin-right: 25px;"> 
+  Open popover
+</button>
+
+<div popover id="x">
+  Lorem Ipsum is simply dummy text of the printing and <a href="#">typesetting industry</a>.
+</div>
+
+<style>
+code {
+  font-size: 1.2rem;
+}
+</style>
+
+---
+
+# `[popover]` implementation
+Requires no JavaScript, just HTML
+
+```html
+<button popovertarget="x" popovertargetaction="show"> 
+  Open popover
+</button>
+
+<!-- Or open with Javascript -->
+<button onclick="document.getElementById('x').showPopover()"> 
+  element.showPopover();
+</button>
+
+<div popover id="x">
+  ...
+</div>
+```
+
+<button popovertarget="y" popovertargetaction="show" style="color:black; padding: 2px; background-color: #f0f0f0; margin-right: 25px;"> 
+  Open popover
+</button>
+
+<!-- Or open with Javascript -->
+<button onclick="document.getElementById('y').showPopover()" style="color:black; padding: 2px; background-color: #f0f0f0;"> 
+  element.showPopover();
+</button>
+
+<div popover id="y">
+  Lorem Ipsum is simply dummy text of the <a href="#">printing</a> and typesetting industry.
+</div>
+
+<style>
+code {
+  font-size: 1.2rem;
+}
+#y {
+   font-size: 1.8rem;
+   max-width: 300px;
+   background-color: #f0f0f0;
+   color: black;
+}
+</style>
 
 ---
 layout: image
-image: /images/margin.png
+image: /images/margin-auto-popover.webp
 ---
 
 ---
@@ -908,12 +1289,6 @@ CSS anchor() is not supported by all browsers yet 😒
 
 ---
 
-# popover="auto"
-
-<PopoverDemo />
-
----
-
 # "hint" and "manual"
 
 <PopoverDemoHint />
@@ -921,6 +1296,65 @@ CSS anchor() is not supported by all browsers yet 😒
 ---
 
 <ToastDemo />
+
+---
+
+# `<dialog>` vs `[popover]` vs modals
+
+| `<dialog>`s <br> <small><i>`<dialog>` with `show()`</i></small>    | `[popover]`s | **modals** <br> <small><i>`<dialog>` with `showModal()`</i></small>   |
+| ----------- | ----------- |--------
+| Explicit dismiss      | Light dismiss    | Explicit dismiss |
+| `z-index`   | `#top-layer`        | `#top-layer` |
+| `❌`   | `::backdrop` ⁈       | `::backdrop` |
+| `❌`   | Keyboard assistance        | Keyboard assistance && <br> focus trap |
+
+
+<style>
+ 
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 2rem 0;
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+th, td {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+th {
+  background: rgba(255, 255, 255, 0.15);
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+td {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover {
+  border: 3px solid white;
+}
+
+td:nth-child(1) {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+td:nth-child(2) {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+</style>
 
 ---
 
@@ -937,957 +1371,15 @@ CSS anchor() is not supported by all browsers yet 😒
 </style>
 
 ---
-
-# People who don't use a mouse, use focus styles to see where they are
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. [Lorem Ipsum](#) has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-<button>Submit</button>
-
-<style>
-.slidev-layout{
-width: 800px;
-margin: auto;
-}
-
-button {
-  all: revert;
-  display: block;
-  background-color: black;
-  color: white;
-  margin-top:10px;
-}
-
-button {
-    background-color: darkblue ;
-  color: white;
-border-style: solid;
-border-color: orange;
-  font-size: 120%;
-  margin: 0.4rem;
-}
-
-input[type="checkbox"] {
-  border: 3px solid white;
-}
-
-button:focus {
-  outline: webkit-focus-ring-color auto 5px;
-  outline-offset: 5px;
-}
-
-p {
-  margin-top: 50px;
-  max-width: 28rem;
-}
-</style>
-
-<BarBottom title="keyboard accessibility & focus">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
+layout: center
 ---
-
-## layout: center
-
-# Ask your self: is the tab order sensible?
-
-(not to many tab stops)
-
-<style>
-.slidev-layout{
-width: 800px;
-margin: auto;
-text-align: center;
-}
-</style>
-
----
-
-layout: image
-image: /images/sidewalk.jpg
-
----
-
-<BarBottom title="keyboard accessibility & focus" class="bg-black">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
-
-layout: image
-image: /images/remote.jpg
-
----
-
-<BarBottom title="keyboard accessibility & focus" class="bg-black">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
-
-## layout: center
-
-# Never remove or hide the <span>focus ring!</span>
-
-<style>
-span {
-  border: 5px double white;
-  padding: 0px 10px;
-}
-.slidev-layout{
-width: 800px;
-margin: auto;
-}
-</style>
-
----
-
-layout: image
-image: /images/steal-cursor.png
-
----
-
-<BarBottom title="Laura Carvajal on stage at Fronteers conference 2018." class="bg-black">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
-
-## level: 2
-
-# Basic keyboard navigation
-
-How to navigate a website with the keyboard, [keyboard navigation](https://accessibleweb.com/question-answer/navigate-website-keyboard/)
-
-| **Keyboard**                                        | **Action**                                                                                                |
-| --------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| <kbd>Tab</kbd>                                      | move to next interactive element                                                                          |
-| <kbd>Shift</kbd> + <kbd>Tab</kbd>                   | move to previous interactive element                                                                      |
-| <kbd>Return</kbd>/<kbd>Enter</kbd>                  | activate elements (links, buttons, etc)                                                                   |
-| <kbd>Spacebar</kbd>                                 | activates buttons, checkbox, selectbox (such as to pause/play videos, submit forms, etc)                  |
-| <kbd>Esc</kbd>                                      | close opened content (modals, navigation menus, etc) or cancel current action                             |
-| <kbd>←</kbd>/<kbd>↑</kbd>/<kbd>→</kbd>/<kbd>↓</kbd> | navigate within widgets (tablists, checkboxes within a disclosure button, etc) and navigate around a page |
-
-<BarBottom title="keyboard accessibility & focus">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
-
-## layout: center
-
-# Good focus styles
-
-- Visible
-- 3:1 contrast <span v-mark.underline>against adjacent colors</span>
-- Consistent
-
-<BarBottom title="keyboard accessibility & focus">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
-
-layout: two-cols
-layoutClass: gap-16
-
----
-
-# Oreo focus style
-
-   <p class="white">
-    This is a dark text on a white background. It contains <a href="#">a link on a white background</a> and serves as an excellent example.
-    </p>
-
-  <p class="gray">
-      This is a dark text on a gray background. It contains <a href="#">a link on a gray background</a> and serves as an excellent example.
-  </p>
-
-  <p class="black">
-      This is a light text on a black background. It contains <a href="#">a link on a black background</a> and serves as an excellent example.
-  </p>
-
-::right::
-
-<div class="mt-50"></div>
-
-```css
-:focus {
-  box-shadow: 0 0 0 0.25rem white;
-  outline: 0.375rem double black;
-  border-radius: 0.125rem;
-}
-```
-
-<style>
-  :focus {
-  box-shadow: 0 0 0 .25rem white;
-  outline: .375rem double black;
-  border-radius: .125rem;
-}
-
-p {
-  padding: 1rem;
-  max-width: 20rem;
-}
-
-.white {
-  background-color: white;
-  color: black;
-}
-
-.gray {
-  background-color: #757575;
-}
-
-.black {
-  color: white;
-  background-color: black;
-}
-.black a {
-  color: #aaa;
-}
-</style>
-
-<BarBottom title="https://www.erikkroes.nl/blog/the-universal-focus-state/">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
-
-## layout: center
-
-# Only one thing on a given page can have <span>focus</span> at a time
-
-<style>
-.slidev-layout{
-width: 750px;
-margin: auto;
-text-align: center;
-}
-
-span {
-  border: 5px ridge white;
-  padding: 0px 5px;
-  line-height: 2;
-}
-</style>
-
----
-
-## layout: center
-
-# Interactive elements
-
-`<button>`,`<a href>`,`<input>`,`<details>`,`<select>`
-
-<BarBottom title="keyboard accessibility & focus">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
-
-## layout: center
-
-# Let's try!
-
-<br>
-
-## `<button>` and `<a href>`
-
-<button class="mr-4">button</button> [link](#)
-
-## Color `<input type="color">`
-
-<input type="color" value="#fd00ff">
-
-<div class="mt-10"></div>
-
-## `<radio>` and `<checkbox>`
-
-<div class="bg-white text-black">
-<fieldset>
-  <legend>Do you like coffee?</legend>
-  <div class="radio">
-    <input type="radio" name="coffee" id="no" value="no"/>
-    <label for="no">Nope</label>
-    <input type="radio" name="coffee" id="yes" value="yes"/>
-    <label for="yes">Yes</label>
-    <input type="radio" name="coffee" id="love" value="love" />
-    <label for="love">No, I LOVE it!</label>
-  </div>
-</fieldset>
-
-<fieldset>
-  <legend>Please send me</legend>
-  <div class="checkbox">
-    <input type="checkbox" name="snacks" id="snacks-pizza" value="pizza">
-    <label for="snacks-pizza">Pizza</label>
-    <input type="checkbox" name="snacks" id="snacks-cake" value="cake">
-    <label for="snacks-cake">Cake</label>
-    <input type="checkbox" name="snacks" id="snacks-ice-cream" value="ice-cream">
-    <label for="snacks-ice-cream">Ice Cream</label>
-  </div>
-</fieldset>
-</div>
-
-<style>
-:focus {
-  box-shadow: 0 0 0 .25rem white;
-  outline: .375rem double black;
-  border-radius: .125rem;
-}
-button, select, a, label, fieldset, legend, input {
-  all: revert;
-}
-
-button, input[type="color"] {
-  margin-right: 1rem;
-    background-color: black;
-  color: white;
-}
-
-button {
-    background-color: darkblue ;
-  color: white;
-border-style: solid;
-border-color: orange;
-  font-size: 120%;
-  margin: 0.4rem;
-}
-
-a:active {
-  color: red;
-}
-button:active {
-  background-color: red;
-}
-</style>
-
----
-
-## layout: center
-
-# Debugging focused element
-
-```js
-document.addEventListener(
-  "focus",
-  function () {
-    console.log("focused: ", document.activeElement);
-  },
-  true
-);
-```
-
-<BarBottom title="keyboard accessibility & focus">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
-
-## layout: center
-
-# Focus with JavaScript
-
-```js
-element.focus();
-```
-
-<BarBottom title="keyboard accessibility & focus">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
-
-layout: image-left
-image: /images/itsatrap.png
-backgroundSize: contain
-
----
-
-# When do we need to trap focus?
-
-- Within a modal window
-- Within modal navigation
-- In a full screen alert
-
-<BarBottom title="keyboard accessibility & focus">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
-
-layout: image-left
-image: /images/focustrapp.png
-backgroundSize: contain
-
----
-
-# How to trap focus within an element
-
-```js
-modal.show();
-modal.trapFocus();
-```
-
-```html
-<div
-  id="dialog"
-  role="dialog"
-  tabindex="-1"
-  hidden
-  aria-labelledby="dialog-title"
->
-  <form class="dialog-content">
-    <h1 id="dialog-title">Name Entry</h1>
-
-    <label for="within-dialog">Name</label>
-    <input id="within-dialog" />
-
-    <button type="button" id="close-dialog">Close</button>
-    <button type="submit" id="save-dialog">Save</button>
-  </form>
-</div>
-```
-
-<BarBottom title="https://hidde.blog/using-javascript-to-trap-focus-in-an-element/">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
-
-## layout: center
-
-# How to trap focus within an element (2)
-
-```js
-// method of the HTMLDialogElement
-modal.showModal();
-```
-
----
-
-# Demo `modal.show()` vs `modal.showModal()`
-
-- The modal should trap focus
-- First focusable element should be focused
-- Close with <kbd>Esc</kbd>
-- When the modal is closed, focus should return to the element that opened the modal
-
-<dialog id="modal1">
-  <h1>Welcome!</h1>
-  <p>Click Close or press esc to close modal</p>
-  <form method="dialog" class="text-end">
-    <button class="btn btn-primary mr-2">Submit</button>
-    <button class="btn btn-primary">Close</button>
-  </form>
-</dialog>
-
-<dialog id="modal2">
-  <h1>Welcome!</h1>
-  <p>Click Close or press esc to close modal</p>
-  <form method="dialog" class="text-end">
-    <button class="btn btn-primary mr-2">Submit</button>
-    <button class="btn btn-primary">Close</button>
-  </form>
-</dialog>
-
-<button onclick="modal1.show()" class="btn btn-primary">show()</button>
-<button onclick="modal2.showModal()" class="btn btn-primary">ShowModal()</button>
-
-<BarBottom title="keyboard accessibility & focus">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
-<style>
-  dialog {
-    all: revert;
-  }
-  button {
-    all: revert;
-    margin-right: 5px;
-      background-color: black;
-  color: white;
-  }
-  button, input[type="color"] {
-    background-color: darkblue ;
-  color: white;
-border-style: solid;
-border-color: orange;
-  font-size: 120%;
-  margin: 0.4rem;
-}
-  :focus {
-  box-shadow: 0 0 0 .25rem white;
-  outline: .375rem double black;
-  border-radius: .125rem;
-}
-</style>
-
----
-
-## layout: center
-
-# HTML (`tabindex`) allows us to customise focus order
-
-use this feature with caution!
-
-<style>
-.slidev-layout{
-width: 800px;
-margin: auto;
-text-align: center;
-}
-</style>
-
----
-
-layout: two-cols
-layoutClass: gap-1
-
----
-
-# What is the `tabindex` attribute?
-
-<p>The <code>tabindex</code> attribute specifies the tab order of an element. It can have three different types of values:</p>
-
-<dl>
-  <dt><code>tabindex="0"</code></dt>
-  <!-- <dd>Makes an element focusable via keyboard in the natural document order</dd> -->
-  <dt class="font-semibold mt-4"><code>tabindex="-1"</code></dt>
-  <!-- <dd>Makes an element programmatically focusable, but not via keyboard navigation</dd> -->
-  <dt class="font-semibold mt-4"><code>tabindex="1+"</code> (positive values)</dt>
-  <!-- <dd>Defines an explicit tab order (generally not recommended)</dd> -->
-</dl>
-
-<BarBottom title="keyboard accessibility & focus">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
-
-# Natural Tab Order
-
-<div class="demo-box">
-  <p>These elements are in their natural tab order (no <code>tabindex</code>):</p>
-  <div class="container">
-      <button>First Button</button>
-      <a href="#">Link</a>
-      <button>Second Button</button>
-      <input type="text">
-      <button>Third Button</button>
-  </div>  
-  <div class="tips positive">
-      <p class="text-sm">Whenever possible, structure your HTML so that the natural tab order matches the logical reading order. This is the most accessible approach.</p>
-  </div>
-</div>
-
-<style>
-:focus {
-  box-shadow: 0 0 0 .25rem white;
-  outline: .375rem double black;
-  border-radius: .125rem;
-}
-button, select, a, label, fieldset, legend, input {
-  all: revert;
-  margin-right: 1rem;
-}
-
-a {
-color: white;
-}
-
-button, input[type="color"] {
-  margin-right: 1rem;
-    background-color: darkblue ;
-  color: white;
-}
-
-a:active {
-  color: red;
-}
-button:active {
-  background-color: red;
-}
-</style>
-
-<BarBottom title="keyboard accessibility & focus">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
-
-## Making Non-Interactive Elements Focusable
-
-<div class="demo-box">
-  <p>Regular divs are not focusable by default, but <code>tabindex="0"</code> makes them part of the tab sequence:</p>
-    
-  <div class="element border-2 border-red600 p1" tabindex="0">This div has <code>tabindex="0"</code> - It is now keyboard focusable</div>
-  <div class="element border-2 border-green600 mt-2 p1" tabindex="0">Another div with <code>tabindex="0"</code></div>
-
-<button>Regular button (naturally focusable)</button>
-
-</div>
-
-<style>
-:focus {
-  box-shadow: 0 0 0 .25rem white;
-  outline: .375rem double black;
-  border-radius: .125rem;
-}
-button, select, a, label, fieldset, legend, input {
-  all: revert;
-  margin-right: 1rem;
-}
-
-button, input[type="color"] {
-  margin-right: 1rem;
-    background-color: darkblue ;
-  color: white;
-}
-
-a:active {
-  color: red;
-}
-button:active {
-  background-color: red;
-}
-</style>
-
-<BarBottom title="keyboard accessibility & focus">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
-
-## Programmatic Focus with <code>tabindex="-1"</code>
-
-<div class="demo-box">
-  <p>Elements with <code>tabindex="-1"</code> can receive focus programmatically but are not in the tab order:</p>
-    <a href="#">Link</a>
-  <div class="element border-2 border-red600 p1" tabindex="-1">This div has <code>tabindex="-1"</code> - Not in tab order</div>
-  <button onclick="document.querySelector('[tabindex=\'-1\']').focus()">Click to focus the element above</button>
-<br>
-<br>
-
-Focus with with javascript
-
-```js
-element.focus();
-```
-
-<v-click>
-  
-  `tabindex="-1"` is useful for:
-  <ul>
-      <li>Custom widgets where you manage focus manually</li>
-      <li>Off-screen content that needs to be focused programmatically</li>
-      <li>Managing focus for elements that should only be focused under specific conditions</li>
-  </ul>
-</v-click>
-</div>
-
-<style>
-:focus {
-  box-shadow: 0 0 0 .25rem white;
-  outline: .375rem double black;
-  border-radius: .125rem;
-}
-button, select, a, label, fieldset, legend, input {
-  all: revert;
-  margin-right: 1rem;
-}
-
-button, input[type="color"] {
-  margin-right: 1rem;
-    background-color: darkblue ;
-  color: white;
-}
-
-a {
-color: white;
-}
-
-a:active {
-  color: red;
-}
-button:active {
-  background-color: red;
-}
-</style>
-
-<BarBottom title="keyboard accessibility & focus">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
-
-## Positive Tabindex Values (Not Recommended)
-
-<div class="demo-box">
-    <p>Positive tabindex values create a custom tab order that overrides the document structure:</p>
-    
-  <div class="container">
-    <button tabindex="3">Button with tabindex="3" (third)</button>
-    <button tabindex="1">Button with tabindex="1" (first)</button>
-    <button tabindex="2">Button with tabindex="2" (second)</button>
-    <button>Button with no tabindex (fourth)</button>
-  </div>
-    
-<v-click>
-  <div class="tips negative mt-10">
-      <h2>❌ Not Recommended</h2>
-      <p>Using positive tabindex values is generally discouraged because:</p>
-      <ul>
-          <li>It creates a disconnect between visual and keyboard navigation orders</li>
-          <li>It's difficult to maintain as your HTML changes</li>
-          <li>It can create a confusing experience for keyboard and screen reader users</li>
-          <li>It can lead to "tab traps" where users get stuck in a section</li>
-      </ul>
-  </div>
-</v-click>
-</div>
-
-<style>
-:focus {
-  box-shadow: 0 0 0 .25rem white;
-  outline: .375rem double black;
-  border-radius: .125rem;
-}
-button, select, a, label, fieldset, legend, input {
-  all: revert;
-  margin-right: 1rem;
-}
-
-button, input[type="color"] {
-    background-color: darkblue ;
-  color: white;
-border-style: solid;
-border-color: orange;
-  font-size: 120%;
-  margin: 0.4rem;
-}
-
-a:active {
-  color: red;
-}
-button:active {
-  background-color: red;
-}
-</style>
-
-<BarBottom title="keyboard accessibility & focus">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
-
-## layout: center
-
-# Summary
-
-- People using the web with a keyboard
-- Shortcuts
-- Interactive elements
-- Focus rings
-- Focus traps
-- Tabindex
-
-<BarBottom title="keyboard accessibility & focus">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
-
-## layout: center
-
-# focustrap podcast
-
-I'm hosting a podcast called "focustrap" where we discuss all things digital accessibility.
-
-Check it out! [focustrap](https://focusring.io/podcast-focustrap) ❤️
-
-<div class="flex justify-center gap-4 mt-10">
- <img src="/images/qr.png" alt="focustrap qr code" class="ml-10 size-50" />
-  <img src="/images/latest-focustrap.png" alt="focustrap qr code" class="ml-10 max-w-[500px]" />
- 
-</div>
-
-<BarBottom title="keyboard accessibility & focus">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
-
-## layout: center
 
 # Thank you! 🙏
 
 Let's stay in touch!
 
 <div class="flex justify-start gap-4 mt-10">
-<img src="/images/LQR.png" alt="linkedIn QR" class="ml-10 size-50 align-right" />
+<img src="/images/LQR.png" alt="linkedIn QR" class="size-50 align-right" />
 </div>
 
 <BarBottom title=" ">

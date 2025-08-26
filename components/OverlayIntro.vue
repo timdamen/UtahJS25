@@ -66,9 +66,6 @@
           class="particle"
           :style="particle.style"
         ></div>
-        
-        <!-- Z-index indicator -->
-        <div class="z-index-indicator">z-index: ∞</div>
       </div>
     </div>
   </div>
@@ -239,7 +236,7 @@ onUnmounted(() => {
 .slide-container {
   width: 90%;
   max-width: 1200px;
-  height: 80vh;
+  height: 70vh;
   position: relative;
   display: flex;
   flex-direction: column;

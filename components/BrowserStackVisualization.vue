@@ -33,7 +33,7 @@
         <div class="layer z-index-layer" :class="{ 'highlight': highlightedLayer === 'z-index' }">
           <div class="layer-label">
             <h2><code>z-index</code></h2>
-            <p>z-index: 1 → <span class="text-xl/1">∞</span></p>
+            <p>z-index: 1 → <span class="">2147483647</span></p>
           </div>
           <div class="layer-content">
             <div 
@@ -58,7 +58,7 @@
         <!-- Layer 1: Normal Document Flow -->
         <div class="layer document-flow" :class="{ 'highlight': highlightedLayer === 'document' }">
           <div class="layer-label">
-            <h2>Main Document</h2>
+            <h2><code>document</code></h2>
             <p>z-index: auto</p>
           </div>
           <div class="layer-content">
@@ -152,7 +152,7 @@ const documentElements = reactive([
 
 // Z-index elements (middle layer)
 const zIndexElements = reactive([
-  { id: 'z1', label: 'Dropdown', type: 'dropdown', x: 25, y: 5, zIndex: 10, delay: '0.6s', layer: 'z-index' },
+  { id: 'z1', label: 'Dropdown', type: 'dropdown', x: 35, y: 5, zIndex: 10, delay: '0.6s', layer: 'z-index' },
   { id: 'z2', label: 'Tooltip', type: 'tooltip', x: 50, y: 30, zIndex: 100, delay: '0.7s', layer: 'z-index' },
   { id: 'z3', label: 'Overlay', type: 'overlay', x: 30, y: 50, zIndex: 1000, delay: '0.8s', layer: 'z-index' },
   { id: 'z4', label: 'Notification', type: 'notification', x: 70, y: 25, zIndex: 9999, delay: '0.9s', layer: 'z-index' }

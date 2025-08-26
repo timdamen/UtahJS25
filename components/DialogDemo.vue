@@ -153,7 +153,6 @@ let sessionTimer = null
 const showSurveyDialog = () => {
   if (surveyDialog.value) {
     surveyDialog.value.show() // Non-modal
-    showStatus('Survey dialog opened (non-modal) - you can still interact with the page!', 'info')
   }
 }
 
@@ -164,12 +163,10 @@ const closeSurveyDialog = () => {
 }
 
 const participateInSurvey = () => {
-  showStatus('Thank you! Survey link sent to your email.', 'success')
   closeSurveyDialog()
 }
 
 const handleSurveyClose = () => {
-  showStatus('Survey dialog closed', 'info')
 }
 
 // Session Dialog Functions
@@ -177,7 +174,6 @@ const showSessionDialog = () => {
   if (sessionDialog.value) {
     sessionDialog.value.showModal() // Modal
     startSessionCountdown()
-    showStatus('Session dialog opened (modal) - page interaction blocked', 'warning')
   }
 }
 
@@ -200,7 +196,6 @@ const extendSession = () => {
   if (sessionTimer) {
     clearInterval(sessionTimer)
   }
-  showStatus('Session extended successfully!', 'success')
   sessionDialog.value?.close()
 }
 
@@ -208,7 +203,6 @@ const logoutNow = () => {
   if (sessionTimer) {
     clearInterval(sessionTimer)
   }
-  showStatus('Logged out successfully', 'info')
   sessionDialog.value?.close()
 }
 
@@ -216,34 +210,28 @@ const handleSessionClose = () => {
   if (sessionTimer) {
     clearInterval(sessionTimer)
   }
-  showStatus('Session dialog closed', 'info')
 }
 
 // Unsaved Changes Dialog Functions
 const showUnsavedDialog = () => {
   if (unsavedDialog.value) {
     unsavedDialog.value.showModal() // Modal
-    showStatus('Warning dialog opened (modal) - critical decision required', 'warning')
   }
 }
 
 const saveAndClose = () => {
-  showStatus('Changes saved successfully!', 'success')
   unsavedDialog.value?.close()
 }
 
 const discardChanges = () => {
-  showStatus('Changes discarded', 'warning')
   unsavedDialog.value?.close()
 }
 
 const cancelClose = () => {
-  showStatus('Operation cancelled - staying on page', 'info')
   unsavedDialog.value?.close()
 }
 
 const handleUnsavedClose = () => {
-  showStatus('Warning dialog closed', 'info')
 }
 
 // Utility Functions
@@ -345,12 +333,12 @@ dialog {
   border-radius: 12px;
   padding: 0;
   box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-  max-width: 400px;
+  max-width: 400px !important;
   width: 90vw;
 }
 
 dialog::backdrop {
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.7);
   animation: backdropFade 0.3s ease;
 }
 
@@ -378,6 +366,7 @@ dialog::backdrop {
 }
 
 .dialog-body {
+  background-color: white;
   padding: 1rem 1.5rem;
 }
 
@@ -399,6 +388,8 @@ dialog::backdrop {
   padding: 1rem 1.5rem 1.5rem;
   justify-content: flex-end;
   flex-wrap: wrap;
+  background-color: #262624;
+  border: solid 5px white;
 }
 
 /* Survey Dialog Specific */

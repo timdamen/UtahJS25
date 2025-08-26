@@ -54,9 +54,8 @@
         <div class="connection-content">
           <h2>🏔️ Utah's Toplayer</h2>
           <p>
-            Just like how the layers of sedimentary rock in Utah's national
-            parks tell the story of geological time, the toplayer represents the
-            culmination of decades of web development evolution.
+            Just like how the layers of rock in Utah's national
+            parks tell the story of time, the toplayer represents the decades of web development evolution.
           </p>
         </div>
       </div>
@@ -532,7 +531,7 @@ onUnmounted(() => {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   padding: 2rem;
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
 }
 
