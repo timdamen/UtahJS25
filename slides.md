@@ -362,29 +362,6 @@ padding: 0px;
 
 ---
 
-<SlidevVideo autoplay autoreset="slide" loop>
-  <!-- Anything that can go in an HTML video element. -->
-  <source src="/images/modalz.mov" type="video/mp4" />
-  <p>
-    Your browser does not support videos. You may download it
-    <a href="/images/modalz.mov">here</a>.
-  </p>
-</SlidevVideo>
-
-<BarBottom title="modalzmodalzmodalz.com">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
-
 <Youtube id="UMLgenmD2aY?start=133&rel=0" width="100%" height="450px"/>
 
 <BarBottom title="Diving into the Toplayer: Where Dialogs, Popovers, and Modals Live">
@@ -401,7 +378,7 @@ padding: 0px;
 
 ---
 layout: image-right
-image: /images/Tim-2.jpeg
+image: /images/wcag.webp
 ---
 
 # Tim Damen
@@ -431,12 +408,54 @@ image: /images/Tim-2.jpeg
 
 ---
 layout: image
-image: /images/Tim-2.jpeg
+image: /images/zion.webp
 ---
 
 ---
 layout: image
 image: /images/lowlands.jpeg
+---
+
+---
+layout: center
+---
+
+<div v-click.hide>
+
+# Zoetermeer
+
+</div>
+
+<div v-click>
+
+# <span>Zoeter</span> <span>meer</span>
+
+</div>
+
+<div v-click>
+
+# Sweet lake
+
+</div>
+
+<div v-click>
+
+# Sweet lake city
+
+</div>
+
+
+<style>
+.slidev-layout{
+width: 800px;
+margin: auto;
+text-align: center;
+}
+</style>
+
+---
+layout: image
+image: /images/sweetlake.webp
 ---
 
 ---
@@ -865,22 +884,6 @@ h1 {
 </style>
 
 ---
-
-<Youtube id="V_1-xoxFdzM?rel=0" width="100%" height="450px"/>
-
-<BarBottom title="Diving into the Toplayer: Where Dialogs, Popovers, and Modals Live">
-  <Item text="timdamen.io">
-    <carbon:link />
-  </Item>
-  <Item text="Tim Damen">
-    <carbon:logo-linkedin />
-  </Item>
-    <Item text="timdamen">
-    <carbon:logo-github />
-  </Item>
-</BarBottom>
-
----
 layout: center
 ---
 
@@ -1007,9 +1010,9 @@ code {
 <br>
 
 - `role="dialog"` is added automatically
-- <kbd>Esc</kbd> to close
 - Option to show as modal or non-modal
-- Focus is trapped when opened as modal (`showModal()`)
+- <kbd>Esc</kbd> to close when opened as modal
+- Focus is trapped when opened as modal
 
 <style>
 code {
@@ -1281,17 +1284,16 @@ image: /images/margin-auto-popover.webp
 CSS anchor() is not supported by all browsers yet 😒
 </v-click>
 
-
----
-
-<iframe height="500" style="width: 100%;" scrolling="no" title="position-try with flip keyword" src="https://codepen.io/una/embed/QWPvGRZ?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-</iframe>
-
 ---
 
 # "hint" and "manual"
 
 <PopoverDemoHint />
+
+---
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="position-try with flip keyword" src="https://codepen.io/una/embed/QWPvGRZ?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+</iframe>
 
 ---
 
