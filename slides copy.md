@@ -729,6 +729,191 @@ padding: 0px;
 }
 </style>
 
+---
+
+# FILO stacking
+First In, Last Out
+
+<div class="stack-container">
+    <div class="item item1">First</div>
+    <div class="item item2">Second</div>
+    <div class="item item3">Third</div>
+</div>
+
+<div class="info">
+    <p><strong>Push Order:</strong> First → Second → Third</p>
+    <p><strong>Pop Order:</strong> Third → Second → First</p>
+    <p style="margin-top: 10px;">The first item added is the last to be removed!</p>
+</div>
+
+<style>
+
+h1 {
+    color: #white;
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.stack-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 30px;
+    border: 3px solid #white;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    background: rgba(0, 0, 0, 0.79);
+}
+
+.stack-label {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #666;
+    font-weight: bold;
+}
+
+.item {
+    position: absolute;
+    width: 180px;
+    height: 50px;
+    left: 10px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+}
+
+.item1 {
+    animation: pushItem1 8s infinite;
+}
+
+.item2 {
+    animation: pushItem2 8s infinite;
+}
+
+.item3 {
+    animation: pushItem3 8s infinite;
+}
+
+@keyframes pushItem1 {
+    0%, 10% {
+        opacity: 0;
+        bottom: 300px;
+    }
+    15%, 50% {
+        opacity: 1;
+        bottom: 10px;
+    }
+    55%, 100% {
+        opacity: 0;
+        bottom: 300px;
+    }
+}
+
+@keyframes pushItem2 {
+    0%, 20% {
+        opacity: 0;
+        bottom: 300px;
+    }
+    25%, 45% {
+        opacity: 1;
+        bottom: 70px;
+    }
+    50%, 100% {
+        opacity: 0;
+        bottom: 300px;
+    }
+}
+
+@keyframes pushItem3 {
+    0%, 30% {
+        opacity: 0;
+        bottom: 300px;
+    }
+    35%, 40% {
+        opacity: 1;
+        bottom: 130px;
+    }
+    45%, 100% {
+        opacity: 0;
+        bottom: 300px;
+    }
+}
+
+.phase-indicator {
+    font-size: 1.2em;
+    color: #white;
+    margin-top: 20px;
+    height: 30px;
+}
+
+.phase {
+    opacity: 0;
+    animation: phaseShow 8s infinite;
+}
+
+.phase.push {
+    animation-delay: 0s;
+}
+
+.phase.pop {
+    animation-delay: 3.5s;
+}
+
+@keyframes phaseShow {
+    0%, 35% {
+        opacity: 1;
+    }
+    40%, 100% {
+        opacity: 0;
+    }
+}
+
+.arrow {
+    font-size: 2em;
+    color: #667eea;
+    animation: bounce 1s infinite;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.info {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 15px;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 10px;
+    color: #white;
+}
+
+.info h3 {
+    margin-bottom: 10px;
+    color: #667eea;
+}
+</style>
 
 ---
 layout: center
@@ -867,6 +1052,37 @@ code {
     <carbon:logo-github />
   </Item>
 </BarBottom>
+
+---
+layout: image-left
+image: /images/itsatrap.png
+backgroundSize: contain
+---
+
+# Keyboard focus trap
+
+Sometimes you want to prevent keyboard focus from leaving a component, like a modal dialog.
+
+<BarBottom title="Diving into the Toplayer; Where Dialogs, Popovers, and Modals Live">
+  <Item text="timdamen.io">
+    <carbon:link />
+  </Item>
+  <Item text="Tim Damen">
+    <carbon:logo-linkedin />
+  </Item>
+    <Item text="timdamen">
+    <carbon:logo-github />
+  </Item>
+</BarBottom>
+
+
+<style>
+p {
+  font-size: 140%;
+  line-height: 1.2;
+}
+</style>
+
 
 ---
 layout: image-left

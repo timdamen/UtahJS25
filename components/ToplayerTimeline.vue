@@ -55,7 +55,7 @@
           <h2>🏔️ Utah's Toplayer</h2>
           <p>
             Just like how the layers of rock in Utah's national
-            parks tell the story of time, the toplayer represents the decades of web development evolution.
+            parks tell the story of time, the toplayer represents decades of web development evolution.
           </p>
         </div>
       </div>
@@ -128,7 +128,7 @@ element.msRequestFullscreen()`,
   },
   {
     id: 3,
-    period: "2017",
+    period: "2014",
     title: "HTML5.2 Dialog Element",
     description:
       "The dialog element was added to HTML, introducing the first hint of elements that could escape normal document flow.",

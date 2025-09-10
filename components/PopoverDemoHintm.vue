@@ -13,15 +13,15 @@
           class="hint-button" 
           ref="emailHintButton"
           @click="togglePopover('email')"
-          popovertarget="emailPopove"
+          popovertarget="emailP"
         >
           ?
         </button>
       </div>
     </div>
     <div 
-      id="emailPopove"
-      ref="emailPopover"
+      id="emailP"
+      ref="emailP"
       popover
       class="tooltip" 
       :class="{ 'tooltip-visible': visiblePopovers.email }"
@@ -33,7 +33,7 @@
     </div>
 
     <div class="input-group">
-      <label for="password">popover="auto"</label>
+      <label for="password">popover="manual"</label>
       <div class="input-with-hint">
         <input
           type="password"
@@ -44,7 +44,7 @@
           type="button" 
           class="hint-button" 
           ref="passwordHintButton"
-            popovertarget="passwordPopove"
+            popovertarget="passwordP"
           @click="togglePopover('password')"
         >
           ?
@@ -52,10 +52,10 @@
       </div>
     </div>
     <div 
-    id="passwordPopove"
-      ref="passwordPopover"
+    id="passwordP"
+      ref="passwordP"
       class="tooltip password" 
-      popover="auto"
+      popover="manual"
       :class="{ 'tooltip-visible': visiblePopovers.password }"
       :style="popoverStyles.password"
     >
